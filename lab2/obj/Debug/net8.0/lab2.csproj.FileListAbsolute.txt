@@ -1,0 +1,5 @@
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab2/obj/Debug/net8.0/lab2.GeneratedMSBuildEditorConfig.editorconfig
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab2/obj/Debug/net8.0/lab2.AssemblyInfoInputs.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab2/obj/Debug/net8.0/lab2.AssemblyInfo.cs
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab2/obj/Debug/net8.0/lab2.csproj.CoreCompileInputs.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab2/obj/Debug/net8.0/lab2.sourcelink.json
