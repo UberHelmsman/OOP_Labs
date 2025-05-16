@@ -1,6 +1,6 @@
 ﻿using lab1;
 
-Point2d.WIDTH = 1000;
+Point2d.WIDTH = 800;
 Point2d.HEIGHT = 800;
 
 
@@ -19,3 +19,13 @@ System.Console.WriteLine(vct1[0] + " " + vct1[1]);
 System.Console.WriteLine(vct2.ToString());
 
 System.Console.WriteLine(vct2.Length());
+
+System.Console.WriteLine(vct1.Equals(vct2));
+
+System.Console.WriteLine(vct1-vct2);
+
+System.Console.WriteLine(vct1*5);
+
+System.Console.WriteLine((vct2/20).ToString());
+
+System.Console.WriteLine(Vector2d.ScalarMult(vct1,vct2));

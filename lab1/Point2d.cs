@@ -4,7 +4,7 @@ using System;
 public class Point2d
 {
     public static int WIDTH = 800;
-    public static int HEIGHT = 600;
+    public static int HEIGHT = 800;
 
     private int _x;
     private int _y;

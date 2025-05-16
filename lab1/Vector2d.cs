@@ -50,13 +50,13 @@ public class Vector2d
         return X == other.X && Y == other.Y;
     }
 
-    public override string ToString() => $"<{X}, {Y}>";
+    public override string ToString() => $"({X}, {Y})";
 
     public static Vector2d operator +(Vector2d a, Vector2d b) => new Vector2d(a.X + b.X, a.Y + b.Y);
     public static Vector2d operator -(Vector2d a, Vector2d b) => new Vector2d(a.X - b.X, a.Y - b.Y);
     public static Vector2d operator *(Vector2d v, int scalar) => new Vector2d(v.X * scalar, v.Y * scalar);
     public static Vector2d operator *(int scalar, Vector2d v) => v * scalar;
-    public static Vector2d operator /(Vector2d v, int scalar) => scalar == 0 ? throw new DivideByZeroException("Деление на ноль")         : new Vector2d(v.X / scalar, v.Y / scalar);
+    public static Vector2d operator /(Vector2d v, int scalar) => scalar == 0 ? throw new DivideByZeroException("Деление на ноль") : new Vector2d(v.X / scalar, v.Y / scalar);
 
     // с экземпляром
     public int ScalarMult(Vector2d other) => X * other.X + Y * other.Y;
