@@ -1,4 +1,5 @@
 ﻿namespace lab1;
+
 using System;
 
 public class Vector2d
@@ -12,24 +13,20 @@ public class Vector2d
         Y = y;
     }
 
-    public Vector2d(Point2d start, Point2d end)
-    {
-        X = end.X - start.X;
-        Y = end.Y - start.Y;
-    }
+    public Vector2d(Point2d start, Point2d end) : this(end.X - start.X, end.Y - start.Y) { } //пустое тело конструктора // : позволяет вызвать конструктор
 
     public int this[int index]
     {
-        get{
-            switch (index)
-            {
-                case 0: return X;
-                case 1: return Y;
-                default: throw new Exception("Индекс должен быть 0 или 1");
-            };
-        }
+        get => index switch // matching
+        {
+            0 => X,
+            1 => Y,
+            _ => throw new Exception("Индекс должен быть 0 или 1")
+        };
+
         set
         {
+            
             switch (index)
             {
                 case 0: X = value; break;
@@ -39,9 +36,13 @@ public class Vector2d
         }
     }
 
-    public double Length(){
+    public double Length()
+    {
         return Math.Sqrt(X * X + Y * Y);
     }
+
+    //public double Length = Math.Sqrt(X * X + Y * Y);
+
 
 
     public bool Equals(Vector2d other)
