@@ -1,84 +1,91 @@
-﻿namespace lab2;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-
+namespace lab2;
 
 public class Printer : IDisposable
 {
-    private static Font _font;
-    private readonly Color _color;
-    private readonly (int left, int top) _position;
-    private readonly char _symbol;
-    private readonly ConsoleColor _originalForegroundColor;
-    private readonly ConsoleColor _originalBackgroundColor;
+    private readonly Color _fixedColor;
+    private readonly (int x, int y) _fixedPosition;
+    private readonly char _fixedSymbol;
+    private readonly bool _isInstance;
+    private readonly string _originalCursorState;
+    private static readonly Dictionary<char, string[]> Font = FontLoader.LoadFont();
 
-    public Printer(Color color, (int left, int top) position, char symbol = '*')
+
+    public Printer(Color color, (int x, int y) position, char symbol = '*')
     {
-        _color = color;
-        _position = position;
-        _symbol = symbol;
-        _originalForegroundColor = Console.ForegroundColor;
-        _originalBackgroundColor = Console.BackgroundColor;
+        _fixedColor = color;
+        _fixedPosition = position;
+        _fixedSymbol = symbol;
+        _isInstance = true;
+        
+
+        _originalCursorState = $"\u001b[{Console.CursorTop};{Console.CursorLeft}H"; //место палки в терминале
+        
+
+        Console.Write($"\u001b[{(int)_fixedColor}m");//цвет
     }
 
-    public static void SetFont(string fontFilePath)
+    public static void Print(string text, Color color, (int x, int y) position, char symbol = '*')
     {
-        _font = new Font(fontFilePath);
+
+        var originalPosition = (Console.CursorLeft, Console.CursorTop);//палка в терминале
+        
+
+        Console.Write($"\u001b[{(int)color}m");
+        
+
+        PrintBigText(text, position, symbol);
+        
+
+        Console.Write("\u001b[0m");
+        
+        Console.SetCursorPosition(originalPosition.CursorLeft, originalPosition.CursorTop);//обратно палку возвращаем
     }
 
-    public static void Print(string text, Color color, (int left, int top) position, char symbol = '*')
-    {
-        if (_font == null)
-        {
-            throw new InvalidOperationException("Font is not loaded. Call SetFont first.");
-        }
-
-        int currentTop = position.top;
-
-        // Для каждого символа в тексте
-        foreach (char c in text)
-            {
-                var charLines = _font.GetCharacter(c, _symbol);
-                int charWidth = 0;
-
-                foreach (var line in charLines)
-                {
-                    Console.SetCursorPosition(currentLeft, currentTop);
-                    SetColor(_color);
-                    Console.Write(line);
-                    currentTop++;
-                    charWidth = Math.Max(charWidth, line.Length);
-                }
-
-                currentTop -= charLines.Length;
-                currentLeft += charWidth + 1;
-            }
-
-        ResetColor();
-    }
-
+    // метод для экземпляра
     public void Print(string text)
     {
-        Print(text, _color, _position, _symbol);
+        if (!_isInstance)
+            throw new InvalidOperationException("Метод может быть вызван только на экземпляре класса");
+        
+        PrintBigText(text, _fixedPosition, _fixedSymbol);
     }
 
-    private static void SetColor(Color color)
+    // основной метод принтинга
+    private static void PrintBigText(string text, (int x, int y) position, char symbol)
     {
-        Console.Write($"\x1b[{(int)color}m");
+        text = text.ToUpper();
+        const int fontHeight = 5;
+        
+        for (int row = 0; row < fontHeight; row++)
+        {
+            Console.SetCursorPosition(position.x, position.y + row);
+            
+            foreach (char c in text)
+            {
+                if (Font.ContainsKey(c))
+                {
+                    string pattern = Font[c][row];
+                    pattern = pattern.Replace('*', symbol);
+                    Console.Write(pattern);
+                }
+                else
+                {
+                    Console.Write("     ");
+                }
+            }
+        }
     }
 
-    private static void ResetColor()
-    {
-        Console.Write("\x1b[0m");
-    }
-
+    // это нейросетка подсказала так сделать
     public void Dispose()
     {
-        Console.ForegroundColor = _originalForegroundColor;
-        Console.BackgroundColor = _originalBackgroundColor;
-        Console.SetCursorPosition(0, _position.top + _font.Height + 1);
+        if (_isInstance)
+        {
+            Console.Write("\u001b[0m"); // сброс цвета
+            
+            Console.Write(_originalCursorState); //восстановление положения курсора
+        }
     }
 }

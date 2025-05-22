@@ -1,18 +1,54 @@
-﻿using lab2;
+﻿using System;
+using System.Threading;
+using lab2;
 
-// Загрузка шрифта (создайте файл font.txt в формате как в задании)
-Printer.SetFont("font.txt");
 
-// Статическое использование
-Printer.Print("HELLO", Color.Red, (5, 5), '#');
-Printer.Print("WORLD", Color.BrightGreen, (5, 10), '@');
+Console.Clear();
 
-// Использование с using
-using (var printer = new Printer(Color.Cyan, (5, 15), '+'))
+
+
+Printer.Print("oop is nice and csharp is nice", Color.BrightBlack,(0,1));
+
+/*
+//статический метод
+Console.WriteLine("Статический вывод:");
+Printer.Print("HELLO", Color.BrightRed, (5, 3), '#');
+
+// перемещение палки
+Console.SetCursorPosition(0, 10);
+Console.WriteLine("Статический вывод завершен. Нажмите любую клавишу...");
+Console.ReadKey();
+
+Console.Clear();
+Console.WriteLine("Вывод с использованием экземпляра класса (using):");
+
+// с юзингом (это для чего то с мемори манагемент)
+using (var printer = new Printer(Color.BrightGreen, (10, 3), '@'))
 {
-    printer.Print("CSharp");
-    printer.Print("Rocks");
+    printer.Print("WORLD");
+
+    Console.SetCursorPosition(0, 10);
+    Console.WriteLine("Первое слово выведено");
+    Thread.Sleep(1000);
+
+    // позицию меняем
+    Console.SetCursorPosition(0, 12);
+    Console.WriteLine("Выводим второе слово");
+    Thread.Sleep(1000);
 }
 
-// После using цвета и позиция курсора восстановлены
-Console.WriteLine("Back to normal console output.");
+
+Console.SetCursorPosition(0, 15);
+Console.WriteLine("Цвет автоматически сброшен после using.");
+Console.ReadKey();
+
+// разные цвета
+Console.Clear();
+Console.WriteLine("Демонстрация разных цветов и символов:");
+
+Printer.Print("RED", Color.BrightRed, (0, 2), '*');
+Printer.Print("BLUE", Color.BrightBlue, (0, 8), '+');
+Printer.Print("GREEN", Color.BrightGreen, (0, 14), '#');
+
+Console.SetCursorPosition(0, 20);
+*/
