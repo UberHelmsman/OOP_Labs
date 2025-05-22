@@ -17,7 +17,7 @@ public class Vector2d
 
     public int this[int index]
     {
-        get => index switch // matching
+        get => index switch // matching?
         {
             0 => X,
             1 => Y,
@@ -26,7 +26,6 @@ public class Vector2d
 
         set
         {
-            
             switch (index)
             {
                 case 0: X = value; break;
