@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "07HXL3HrcpmfORD3+Iv1WQvQFjcR5J8fwGfG9dN3jWHNydUMsYhkl67nSejKRtiW+d/ax7OfmT6aIqrOwZ/gxw==",
+  "success": true,
+  "projectFilePath": "/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab3/lab3.csproj",
+  "expectedPackageFiles": [
+    "/home/nikolay/.nuget/packages/system.diagnostics.eventlog/9.0.5/system.diagnostics.eventlog.9.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}

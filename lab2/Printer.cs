@@ -1,29 +1,33 @@
 using System;
 using System.Collections.Generic;
+
 namespace lab2;
+
 
 public class Printer : IDisposable
 {
+    private static string prefix = "\u001b[";
     private readonly Color _fixedColor;
     private readonly (int x, int y) _fixedPosition;
     private readonly char _fixedSymbol;
     private readonly bool _isInstance;
     private readonly string _originalCursorState;
-    private static readonly Dictionary<char, string[]> Font = FontLoader.LoadFont();
+    private static Dictionary<char, string[]> Font = FontLoader.LoadFont();
 
 
-    public Printer(Color color, (int x, int y) position, char symbol = '*')
+    public Printer(Color color, (int x, int y) position, char symbol = '*', string FontPath = "font.json")
     {
         _fixedColor = color;
         _fixedPosition = position;
         _fixedSymbol = symbol;
         _isInstance = true;
+        Font = FontLoader.LoadFont(FontPath);
         
 
-        _originalCursorState = $"\u001b[{Console.CursorTop};{Console.CursorLeft}H"; //место палки в терминале
+        _originalCursorState = $"{prefix}{Console.CursorTop};{Console.CursorLeft}H"; // место палки в терминале
         
 
-        Console.Write($"\u001b[{(int)_fixedColor}m");//цвет
+        Console.Write($"{prefix}{(int)_fixedColor}m");//цвет
     }
 
     public static void Print(string text, Color color, (int x, int y) position, char symbol = '*')
@@ -32,13 +36,13 @@ public class Printer : IDisposable
         var originalPosition = (Console.CursorLeft, Console.CursorTop);//палка в терминале
         
 
-        Console.Write($"\u001b[{(int)color}m");
+        Console.Write($"{prefix}{(int)color}m");
         
 
         PrintBigText(text, position, symbol);
         
-
-        Console.Write("\u001b[0m");
+        Console.Write("\u001b[0m"); // сброс цвета
+        //Console.Write($"{prefix}"+"0m");
         
         Console.SetCursorPosition(originalPosition.CursorLeft, originalPosition.CursorTop);//обратно палку возвращаем
     }
@@ -52,12 +56,13 @@ public class Printer : IDisposable
         PrintBigText(text, _fixedPosition, _fixedSymbol);
     }
 
-    // основной метод принтинга
+     // основной метод принтинга
     private static void PrintBigText(string text, (int x, int y) position, char symbol)
     {
         text = text.ToUpper();
-        const int fontHeight = 5;
-        
+        char c1 = (char)text[0];
+        int fontHeight = Font[c1].Length;
+
         for (int row = 0; row < fontHeight; row++)
         {
             Console.SetCursorPosition(position.x, position.y + row);
@@ -78,12 +83,14 @@ public class Printer : IDisposable
         }
     }
 
+    
     // это нейросетка подсказала так сделать
     public void Dispose()
     {
         if (_isInstance)
         {
             Console.Write("\u001b[0m"); // сброс цвета
+            //Console.Write($"{prefix}"+"0m"); // сброс цвета
             
             Console.Write(_originalCursorState); //восстановление положения курсора
         }

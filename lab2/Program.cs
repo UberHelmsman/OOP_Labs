@@ -6,9 +6,6 @@ using lab2;
 Console.Clear();
 
 
-
-Printer.Print("oop is nice and csharp is nice", Color.BrightBlack,(0,1));
-
 /*
 //статический метод
 Console.WriteLine("Статический вывод:");
@@ -21,22 +18,22 @@ Console.ReadKey();
 
 Console.Clear();
 Console.WriteLine("Вывод с использованием экземпляра класса (using):");
-
+*/
 // с юзингом (это для чего то с мемори манагемент)
-using (var printer = new Printer(Color.BrightGreen, (10, 3), '@'))
-{
-    printer.Print("WORLD");
+using var printer = new Printer(Color.BrightGreen, (10, 3), '@');
 
-    Console.SetCursorPosition(0, 10);
-    Console.WriteLine("Первое слово выведено");
-    Thread.Sleep(1000);
+printer.Print("WORLD");
 
-    // позицию меняем
-    Console.SetCursorPosition(0, 12);
-    Console.WriteLine("Выводим второе слово");
-    Thread.Sleep(1000);
-}
+Console.SetCursorPosition(0, 10);
+Console.WriteLine("Первое слово выведено");
+Thread.Sleep(1000);
 
+// позицию меняем
+Console.SetCursorPosition(0, 12);
+Console.WriteLine("Выводим второе слово");
+Thread.Sleep(1000);
+
+/*
 
 Console.SetCursorPosition(0, 15);
 Console.WriteLine("Цвет автоматически сброшен после using.");
