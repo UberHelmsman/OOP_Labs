@@ -1,0 +1,25 @@
+Key bindings loaded from file
+State loaded: Volume=50%, MediaPlayer=False, Text=''
+h
+Text buffer: h
+e
+Text buffer: he
+l
+Text buffer: hel
+l
+Text buffer: hell
+o
+Text buffer: hello
+undo
+Text buffer: hell
+undo
+Text buffer: hel
+redo
+Text buffer: hell
+volume increased to 60%
+volume increased to 70%
+volume decreased to 60%
+undo
+media player launched
+media player stopped
+undo

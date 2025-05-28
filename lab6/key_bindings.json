@@ -1,0 +1,8 @@
+{
+  "ctrl\u002B\u002B": "volume_up",
+  "ctrl\u002B-": "volume_down",
+  "ctrl\u002Bp": "media_player",
+  "letters:a-z": "print_char",
+  "digits:0-9": "print_char",
+  "space": "print_char"
+}

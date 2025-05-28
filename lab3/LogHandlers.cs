@@ -29,9 +29,6 @@ public class FileHandler : ILogHandler
     /// Записывает сообщение в файл с отметкой времени
     /// </summary>
     /// <param name= "text"> Сообщение для записи в файл </param>
-
-
-
     public void Handle(string text)
     {
         try
@@ -90,21 +87,19 @@ public class SocketHandler : ILogHandler
     {
         try
         {
-            using (var client = new TcpClient())
+            using var client = new TcpClient() ;
+            var connectTask = client.ConnectAsync(_host, _port);
+            if (connectTask.Wait(5000))
             {
-                var connectTask = client.ConnectAsync(_host, _port);
-                if (connectTask.Wait(5000))
-                {
-                    var data = Encoding.UTF8.GetBytes($"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {text}\n");
-                    var stream = client.GetStream();
-                    stream.Write(data, 0, data.Length);
-                }
-                else
-                {
-                    System.Console.WriteLine($"Не удалось подключиться к {_host}:{_port}");
-                }
-
+                var data = Encoding.UTF8.GetBytes($"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {text}\n");
+                var stream = client.GetStream();
+                stream.Write(data, 0, data.Length);
             }
+            else
+            {
+                System.Console.WriteLine($"Не удалось подключиться к {_host}:{_port}");
+            }
+
         }
         catch (Exception ex)
         {

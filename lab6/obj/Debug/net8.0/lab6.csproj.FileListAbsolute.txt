@@ -1,0 +1,15 @@
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/bin/Debug/net8.0/lab6
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/bin/Debug/net8.0/lab6.deps.json
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/bin/Debug/net8.0/lab6.runtimeconfig.json
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/bin/Debug/net8.0/lab6.dll
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/bin/Debug/net8.0/lab6.pdb
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.GeneratedMSBuildEditorConfig.editorconfig
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.AssemblyInfoInputs.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.AssemblyInfo.cs
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.csproj.CoreCompileInputs.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.sourcelink.json
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.dll
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/refint/lab6.dll
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.pdb
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/lab6.genruntimeconfig.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab6/obj/Debug/net8.0/ref/lab6.dll

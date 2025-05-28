@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace lab3;
 
+
 /// <summary>
 /// Основной класс логгера, который объединяет фильтры и обработчики
 /// Использует композицию для гибкой настройки системы логирования
@@ -76,45 +77,36 @@ public class Logger
         if (string.IsNullOrEmpty(text))
             return;
 
-        // Если нет фильтров, считаем что сообщение проходит проверку
-        bool passesFilters = _filters.Count == 0;
-
         // Проверяем сообщение через все фильтры
         // Если хотя бы один фильтр пропускает сообщение, оно обрабатывается
-        if (_filters.Count > 0)
+
+        foreach (var filter in _filters)
         {
-            foreach (var filter in _filters)
+            try
             {
-                try
+                if (filter.Match(text))
                 {
-                    if (filter.Match(text))
-                    {
-                        passesFilters = true;
-                        break; // Достаточно одного совпадения
-                    }
+                    return ;
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ошибка в фильтре {filter.GetType().Name}: {ex.Message}");
-                    // Продолжаем проверку другими фильтрами
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка в фильтре {filter.GetType().Name}: {ex.Message}");
+                // Продолжаем проверку другими фильтрами
             }
         }
 
         // Если сообщение прошло фильтрацию, отправляем его всем обработчикам
-        if (passesFilters)
+        foreach (var handler in _handlers)
         {
-            foreach (var handler in _handlers)
+            try
             {
-                try
-                {
-                    handler.Handle(text);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ошибка в обработчике {handler.GetType().Name}: {ex.Message}");
-                    // Продолжаем обработку другими обработчиками
-                }
+                handler.Handle(text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка в обработчике {handler.GetType().Name}: {ex.Message}");
+                // Продолжаем обработку другими обработчиками
             }
         }
     }
