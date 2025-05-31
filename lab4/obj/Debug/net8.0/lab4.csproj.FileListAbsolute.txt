@@ -1,0 +1,15 @@
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/bin/Debug/net8.0/lab4
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/bin/Debug/net8.0/lab4.deps.json
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/bin/Debug/net8.0/lab4.runtimeconfig.json
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/bin/Debug/net8.0/lab4.dll
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/bin/Debug/net8.0/lab4.pdb
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.GeneratedMSBuildEditorConfig.editorconfig
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.AssemblyInfoInputs.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.AssemblyInfo.cs
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.csproj.CoreCompileInputs.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.sourcelink.json
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.dll
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/refint/lab4.dll
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.pdb
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/lab4.genruntimeconfig.cache
+/home/nikolay/Documents/Proga/GitHub/OOP_Labs/lab4/obj/Debug/net8.0/ref/lab4.dll

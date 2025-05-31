@@ -6,6 +6,7 @@ using System.Text.Json;
 
 namespace lab6;
 
+
 /// <summary>
 /// Класс виртуальной клавиатуры, реализующий паттерн Command.
 /// Поддерживает назначение команд на клавиши, операции undo/redo и сохранение состояния.
@@ -127,7 +128,6 @@ public class VirtualKeyboard
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading key bindings: {ex.Message}");
-            CreateDefaultBindingsInMemory();
         }
     }
 
@@ -233,47 +233,6 @@ public class VirtualKeyboard
         Console.WriteLine("Default key bindings file created");
     }
 
-    /// <summary>
-    /// Создает биндинги по умолчанию в памяти (на случай ошибки чтения файла).
-    /// </summary>
-    private void CreateDefaultBindingsInMemory()
-    {
-        Console.WriteLine("Creating default bindings in memory");
-        
-        // Системные команды
-        _keyBindings["ctrl++"] = () => new VolumeUpCommand(
-            () => _currentVolume,
-            vol => _currentVolume = vol
-        );
-
-        _keyBindings["ctrl+-"] = () => new VolumeDownCommand(
-            () => _currentVolume,
-            vol => _currentVolume = vol
-        );
-
-        _keyBindings["ctrl+p"] = () => new MediaPlayerCommand(
-            () => _isMediaPlayerRunning,
-            state => _isMediaPlayerRunning = state
-        );
-
-        // Символы алфавита
-        for (char c = 'a'; c <= 'z'; c++)
-        {
-            char ch = c;
-            _keyBindings[ch.ToString()] = () => new PrintCharacterCommand(ch, _textBuffer);
-        }
-
-        // Цифры
-        for (char c = '0'; c <= '9'; c++)
-        {
-            char ch = c;
-            _keyBindings[ch.ToString()] = () => new PrintCharacterCommand(ch, _textBuffer);
-        }
-
-        // Пробел
-        _keyBindings[" "] = () => new PrintCharacterCommand(' ', _textBuffer);
-        _keyBindings["space"] = () => new PrintCharacterCommand(' ', _textBuffer);
-    }
 
     /// <summary>
     /// Сохраняет текущие биндинги клавиш в JSON файл.

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "\u0418\u0432\u0430\u043D \u0418\u0432\u0430\u043D\u043E\u0432",
+    "login": "ivan",
+    "password": "123",
+    "email": "ivan@mail.ru",
+    "address": "\u041C\u043E\u0441\u043A\u0432\u0430"
+  },
+  {
+    "id": 2,
+    "name": "\u041F\u0435\u0442\u0440 \u041F\u0435\u0442\u0440\u043E\u0432",
+    "login": "petr",
+    "password": "456",
+    "email": "petr@mail.ru",
+    "address": "\u0421\u041F\u0431"
+  },
+  {
+    "id": 3,
+    "name": "\u0410\u043D\u043D\u0430 \u0421\u0438\u0434\u043E\u0440\u043E\u0432\u0430",
+    "login": "anna",
+    "password": "789",
+    "email": "anna@updated.com",
+    "address": null
+  }
+]

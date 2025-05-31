@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "lab3"
+		},
+		{
+			"path": "lab2"
+		},
+		{
+			"path": "lab1"
+		},
+		{
+			"path": "lab6"
+		},
+		{
+			"path": "lab4"
+		},
+		{
+			"path": "lab5"
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "lab1.sln"
+	}
+}
